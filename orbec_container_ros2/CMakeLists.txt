@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(lsy_franka_bringup)
+project(orbec_container_ros2)
 
 find_package(ament_cmake REQUIRED)
 

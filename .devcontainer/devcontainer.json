@@ -17,6 +17,6 @@
         }
     },
     "mounts": [
-        "source=${localWorkspaceFolder},target=/home/ros/ros2_ws/src/orbec_camera_ros2,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder},target=/home/ros/ros2_ws/src/orbec_container_ros2,type=bind,consistency=cached",
     ],
 }

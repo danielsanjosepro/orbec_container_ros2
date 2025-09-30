@@ -70,12 +70,14 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 
 USER $USERNAME
 RUN mkdir -p /home/ros/ros2_ws/src
-WORKDIR /home/ros/ros2_ws/src
+
 SHELL ["/bin/bash", "-c"]
 
 # === ORBECC INSTALL ===
 USER $USERNAME
-WORKDIR /home/$USERNAME/ros2_ws/src
+
+WORKDIR /home/ros/ros2_ws/src
+
 RUN sudo apt update && sudo apt-get install -y \
     libgflags-dev \
     nlohmann-json3-dev  \
@@ -88,9 +90,12 @@ RUN sudo apt update && sudo apt-get install -y \
     ros-${ROS_DISTRO}-backward-ros \
     libdw-dev
 
+WORKDIR /home/$USERNAME/ros2_ws
+
 RUN git clone -b v2-main https://github.com/orbbec/OrbbecSDK_ROS2.git \
     && source /opt/ros/${ROS_DISTRO}/setup.bash \
     && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
 
 FROM base AS overlay
 

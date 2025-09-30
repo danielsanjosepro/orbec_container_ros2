@@ -54,5 +54,5 @@ services:
       SERIAL_NUMBER: todo
     command: > 
       bash -c "source /opt/ros/humble/setup.bash &&
-      source install/setup.bash &&
-      ros2 launch orbec_container_ros2 femto_bolt.launch.py enable_ir:=false enable_depth:=false time_domain:=system camera_name:=$$CAMERA_NAME serial_number:=$$SERIAL_NUMBER"
+      source /home/ros/ros2_ws/install/setup.bash &&
+      ros2 launch orbec_container_ros2 femto_bolt.launch.py camera_ns:=$${CAMERA_NAMESPACE} enable_ir:=false enable_depth:=false time_domain:=system camera_name:=$${CAMERA_NAME} serial_number:=$${SERIAL_NUMBER}"

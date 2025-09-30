@@ -104,6 +104,7 @@ WORKDIR /home/ros/ros2_ws/src
 COPY . .
 
 RUN source /opt/ros/humble/setup.bash \
+    && cd .. \
     && source install/setup.bash \
     && colcon build --symlink-install --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 

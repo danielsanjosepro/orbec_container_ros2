@@ -1,20 +1,12 @@
 {
-    "name": "LSY Franka",
+    "name": "Orbec Camera ROS2 Dev Container",
     "privileged": true,
     "remoteUser": "ros",
     "dockerComposeFile": "./docker-compose.yaml",
-    "workspaceFolder": "/home/ros/ros2_ws/src/lsy_franka",
-    "service": "lsy_franka",
+    "workspaceFolder": "/home/ros/ros2_ws/src/orbec_container_ros2",
+    "service": "orbec_camera_ros2",
     "features": {
-        "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
-            "version": "stable"
-        },
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "lts"
-        },
-        "ghcr.io/larsnieuwenhuizen/features/zellij:0": {
-            "version": "0.0.4"
-        }
+        "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {}
     },
     "customizations": {
         "vscode": {

@@ -1,9 +1,9 @@
 services:
-  lsy_franka:
+  orbec_camera_ros2:
     build:
       context: ..
       target: base
-    container_name: orbec_camera_devcontainer
+    container_name: orbec_camera_ros2_container
     # == These commands defeat the purpose of isolation but simplify now early development ==
     network_mode: "host"
     ipc: "host"

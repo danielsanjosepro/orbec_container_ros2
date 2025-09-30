@@ -1,0 +1,35 @@
+services:
+  lsy_franka:
+    build:
+      context: ..
+      target: base
+    container_name: orbec_camera_devcontainer
+    # == These commands defeat the purpose of isolation but simplify now early development ==
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    privileged: true
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+    volumes:
+      - $HOME/.Xauthority:/root/.Xauthority 
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 81:* rmw'
+      - 'c 189:* rmw'
+    devices:
+      - "/dev/input:/dev/input"  # Mount input devices (needed for the keyboard library)
+    environment:
+      QT_X11_NO_MITSHM: 1
+      DISPLAY: $DISPLAY
+      ROS_DOMAIN_ID: 100
+      RCUTILS_COLORIZED_OUTPUT: 1
+      SHELL: /bin/bash
+    cap_add:
+      - SYS_NICE
+    ulimits:
+      rtprio: 99
+      rttime: -1
+      memlock: 8428281856

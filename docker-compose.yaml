@@ -47,12 +47,13 @@ services:
 
   launch_camera:
     extends: overlay
-    container_name: orbec_container_camera
+    container_name: orbec_container_camera_${SERIAL_NUMBER:-default}
     environment:
-      CAMERA_NAMESPACE: camera
-      CAMERA_NAME: camera
-      SERIAL_NUMBER: todo
-    command: > 
+      CAMERA_NAMESPACE: ${CAMERA_NAMESPACE:-camera}
+      CAMERA_NAME: ${CAMERA_NAME:-camera}
+      SERIAL_NUMBER: ${SERIAL_NUMBER:-todo}
+    command: >
       bash -c "source /opt/ros/humble/setup.bash &&
       source /home/ros/ros2_ws/install/setup.bash &&
+      source /home/ros/ros2_ws/src/set_cyclone.sh &&
       ros2 launch orbec_container_ros2 femto_bolt.launch.py camera_ns:=$${CAMERA_NAMESPACE} enable_ir:=false enable_depth:=false time_domain:=system camera_name:=$${CAMERA_NAME} serial_number:=$${SERIAL_NUMBER}"

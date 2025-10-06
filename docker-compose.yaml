@@ -57,3 +57,30 @@ services:
       source /home/ros/ros2_ws/install/setup.bash &&
       source /home/ros/ros2_ws/src/set_cyclone.sh &&
       ros2 launch orbec_container_ros2 femto_bolt.launch.py camera_ns:=$${CAMERA_NAMESPACE} enable_ir:=false enable_depth:=false time_domain:=system camera_name:=$${CAMERA_NAME} serial_number:=$${SERIAL_NUMBER}"
+
+  launch_right_down_camera:
+    extends:
+      service: launch_camera
+    container_name: orbec_container_camera_down
+    environment:
+      CAMERA_NAME: right_down_third_person_camera
+      CAMERA_NAMESPACE: right
+      SERIAL_NUMBER: CL8MB330047
+
+  launch_right_up_camera:
+    extends:
+      service: launch_camera
+    container_name: orbec_container_camera_up
+    environment:
+      CAMERA_NAME: right_up_third_person_camera
+      CAMERA_NAMESPACE: right
+      SERIAL_NUMBER: CL8MB330050
+
+  launch_right_camera:
+    extends:
+      service: launch_camera
+    container_name: orbec_container_camera_down
+    environment:
+      CAMERA_NAME: right_third_person_camera
+      CAMERA_NAMESPACE: right
+      SERIAL_NUMBER: CL8MB330047

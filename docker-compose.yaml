@@ -44,7 +44,6 @@ services:
       target: overlay
     container_name: orbec_container_ros2_overlay
 
-
   launch_camera:
     extends: overlay
     container_name: orbec_container_camera_${SERIAL_NUMBER:-default}
@@ -79,7 +78,7 @@ services:
   launch_right_camera:
     extends:
       service: launch_camera
-    container_name: orbec_container_camera_down
+    container_name: orbec_container_camera
     environment:
       CAMERA_NAME: right_third_person_camera
       CAMERA_NAMESPACE: right
